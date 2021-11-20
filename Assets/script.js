@@ -28,6 +28,10 @@ var getPasswordPrompts = function () {
   return userInputObj;
 }
 
+var randomgenerator = function(){
+  var caseinput 
+}
+
 var generatePassword = function(){
 
   var options = getPasswordPrompts();
@@ -36,27 +40,40 @@ var generatePassword = function(){
   var uppercasechars = ['A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S','T','U','V','W','X','Y','Z'];
   var numberchars = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'];
   var specialchars = ['@','%','+','\\','/',"'",'!','#','$','^','?',':',',',')','(','}','{',']','[','~','-','_','.'];
+  var i = 0;
 
-  for (i=0 ; i < options.charLength ; i++) {
+  while (i < options.charLength) {
     if (options.lowerCase) {
       var lowercaseinput = Math.floor(Math.random() * lowercasechars.length );
       output.push(lowercasechars[lowercaseinput]);
-      options.charLength--;
+      i++;
+      if (i === options.charLength){
+        break;
+      }
     }
     if (options.upperCase) {
       var uppercaseinput = Math.floor(Math.random() * uppercasechars.length );
       output.push(uppercasechars[uppercaseinput]);
-      options.charLength--;  
+      i++;  
+      if (i === options.charLength){
+        break;
+      }
     }
     if (options.specialChar) {
       var specialcaseinput = Math.floor(Math.random() * specialchars.length );
       output.push(specialchars[specialcaseinput]);
-      options.charLength--;      
+      i++;  
+      if (i === options.charLength){
+        break;
+      }    
     }
     if (options.numberInput) {
       var numberinput = Math.floor(Math.random() * numberchars.length );
       output.push(numberchars[numberinput]);
-      options.charLength--;   
+      i++; 
+      if (i === options.charLength){
+        break;
+      }  
     }
   }
   var outputString = output.join("");
